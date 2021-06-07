@@ -1,0 +1,5 @@
+testing komplex_add..
+a= (2,3)
+b= (3,4)
+a+b should   =  (5,7)
+a+b actually =  (5,7)
