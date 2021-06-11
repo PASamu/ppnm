@@ -1,0 +1,30 @@
+my max int (while) = 2147483647
+my max int (for)  = 2147483647
+my max int (do while) = 2147483647
+int_max = 2147483647
+my min int (while) = -2147483648
+my min int (for) = -2147483648
+my min int (do while) = -2147483648
+int_min = -2147483648
+machine epsilon while loops
+double = 2.22045e-16
+float = 1.19209e-07
+long double = 1.0842e-19
+machine epsilon for loops
+double = 2.22045e-16
+float = 1.19209e-07
+long double = 1.0842e-19
+machine epsilon do while loops
+double = 2.22045e-16
+float = 1.19209e-07
+long double = 1.0842e-19
+flt_epsilon=1.19209e-07
+dbl_epsilon=2.22045e-16
+ldbl_epsilon=1.0842e-19
+sum_up_float=15.4037
+sum_down_float=18.8079
+diff of sum_down and sum_up=-3.40424
+When changing the value of max, the difference stays the same. So I do not see a convergence.
+sum_up_double=20.9662
+sum_down_double=20.9662
+When using double instead of float, the sums are the same. This makes sense, since double has a higher precision (more decimals) than float
