@@ -1,0 +1,2 @@
+result of integral = -4, error = 1.35447e-13 
+integral = -4 (from wolframalpha)
