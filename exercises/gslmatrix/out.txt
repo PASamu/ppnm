@@ -1,0 +1,4 @@
+Solution to system of linear equations:
+   -1.1379  -2.83303  0.851459
+check: A*x should be equal b:
+      6.23      5.37      2.29
