@@ -1,0 +1,3 @@
+total number of points = 999999
+pi from monte carlo sim = 3.14323
+simulated pi - actual pi = 0.00163449
