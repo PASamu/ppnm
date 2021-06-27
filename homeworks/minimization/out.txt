@@ -1,0 +1,21 @@
+Minimization of Rosenbrock's function
+Init point q1=
+         2
+         5
+Rsb(q1)=101
+Minimum point:
+  0.999996
+  0.999991
+Number of steps nsteps=33
+Value at minimum=2.01836e-11
+
+Minimization of Himmelblau's function
+Init point q1=
+         1
+         4
+Him(q1)=136
+Minimum point:
+         3
+         2
+Number of steps nsteps=11
+Value at minimum=6.65991e-13

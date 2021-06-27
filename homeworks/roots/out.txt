@@ -1,0 +1,14 @@
+Finding extremum of Rosenbrock's function by finding roots of gradient
+Initial value of x=
+        -1
+         5
+Initial value of gradient fx=
+      1596
+       800
+Steps=202
+Extremum point:
+  0.999999
+  0.999998
+Gradient value at x (should be zero):
+5.5232e-06
+-3.66087e-06

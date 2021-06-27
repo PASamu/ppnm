@@ -1,0 +1,4 @@
+Integral of sqrt(x) from 0 to 1 (adaptive)=0.666954
+Integral of sqrt(x) from 0 to 1 (analytical)=0.666667
+Integral of 4sqrt(1-x^2) from 0 to 1 (adaptive)=3.14183
+Integral of 4sqrt(1-x^2) from 0 to 1 (analytical)=pi

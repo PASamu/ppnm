@@ -1,0 +1,2 @@
+Value of integral (plain Montecarlo) =1.40862 +- 0.0140056
+Value of integral =1.39 (approx)
