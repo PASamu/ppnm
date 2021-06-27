@@ -1,12 +1,11 @@
 #include<stdio.h>
 #include<math.h>
-#include<float.h>
 #include<gsl/gsl_vector.h>
 #include<gsl/gsl_matrix.h>
 #include<gsl/gsl_blas.h>
 
 
-double delta=sqrt(DBL_EPSILON);
+double delta=1.5e-8;
 
 void num_grad (double f(gsl_vector*),gsl_vector* x, gsl_vector* grad){
 	double fx=f(x);

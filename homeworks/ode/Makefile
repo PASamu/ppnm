@@ -29,7 +29,7 @@ out.SIR.png: sus.txt inf.txt rem.txt Makefile
 	' | pyxplot
 
 sus.txt inf.txt rem.txt out.txt: main
-	@./$< > $@
+	./$< > $@
 
 main: main.o ode.o
 	$(CC) -o main main.o ode.o $(LDLIBS)

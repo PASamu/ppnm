@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<math.h>
+#include<float.h>
 #include<gsl/gsl_vector.h>
 #include"neurons.h"
 
