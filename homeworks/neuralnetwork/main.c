@@ -11,18 +11,34 @@ double fit_func(double x){
 	return cos(5*x-1)*exp(-x*x);
 }
 
+ann* network;
+gsl_vector* xs;
+gsl_vector* ys;
+
+double cost_func(gsl_vector* p){
+	gsl_vector_memcpy(network->params,p);
+	double sum=0;
+	for(int i=0;i<xs->size;i++){
+		double xi=gsl_vector_get(xs,i);
+		double yi=gsl_vector_get(ys,i);
+		double fi=response(network,xi);
+		sum+=fabs(fi-yi);
+	}
+	return sum/xs->size;
+}
+
 int main(){
 	int n=4;
 	ann* network=ann_alloc(n,act_func);
 	double a=-1,b=1;
-	int nx=20;
-	gsl_vector* vx=gsl_vector_alloc(nx);
-	gsl_vector* vy=gsl_vector_alloc(nx);
+	int m=10;
+	gsl_vector* vx=gsl_vector_alloc(m);
+	gsl_vector* vy=gsl_vector_alloc(m);
 
-	for(int i=0;i<nx;i++){
-		double x=a+(b-a)*i/(nx-1);
-		double f=fit_func(x);
+	for(int i=0;i<m;i++){
+		double x=a+(b-a)*i/(m-1);
 		gsl_vector_set(vx,i,x);
+		double f=fit_func(x);
 		gsl_vector_set(vy,i,f);
 	}
 
@@ -41,11 +57,11 @@ int main(){
 	}
 	printf("\n\n");
 
-	for(double z=a;z<b;z+=1./64){
+	for(double z=a;z<=b;z+=1.0/64){
 		double y=response(network,z);
 		printf("%g %g\n",z,y);
 	}
-
+	
 	gsl_vector_free(vx);
 	gsl_vector_free(vy);
 	ann_free(network);

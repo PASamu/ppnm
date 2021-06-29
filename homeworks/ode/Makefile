@@ -1,8 +1,8 @@
 CFLAGS = -Wall -O 
-CFLAGS += $(shell gsl-config --cflags)
+CFLAGS += $(shell gsl-config --cflags) -pedantic
 LDLIBS = -lm
 LDLIBS += $(shell gsl-config --libs)
-
+CC = gcc
 
 default: out.SIR.png 
 	
@@ -32,13 +32,6 @@ sus.txt inf.txt rem.txt out.txt: main
 	./$< > $@
 
 main: main.o ode.o
-	$(CC) -o main main.o ode.o $(LDLIBS)
-
-main.o: main.c
-	$(CC) $(CFLAGS) -c main.c
-
-ode.o: ode.c
-	$(CC) $(CFLAGS) -c ode.c
 
 .PHONEY: clean
 clean:

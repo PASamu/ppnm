@@ -16,12 +16,18 @@ void SIR(double T_c, double t,double y[], double dydt[]){
 	dydt[2]=y[1]/T_r;
 }
 
+static double contact_time;
+
+void SIR_with_Tc(double t, double y[],double dydt[]){
+	SIR(contact_time,t,y,dydt);
+}
+
 int main(){
 	int a=0;
 	int b=100;
 	
-	double h=0.1,acc=1e-2,eps=1e-2;
-	double T_c[]={1,2,4,7}; 	//Time between contacts
+	double h=0.1,acc=1e-3,eps=1e-3;
+	double T_c[]={2,4,7}; 	//Time between contacts
 	int n = sizeof(T_c)/sizeof(T_c[0]);
 	double y[n];
 
@@ -31,8 +37,8 @@ int main(){
 
 	for(int t=1;t<b;t++){
 		//Initial values
-		y[0]=7*1e6;
-		y[1]=10;
+		y[0]=6*1e6;
+		y[1]=100;
 		y[2]=0;
 
 		fprintf (sus,"%i ", t);
@@ -40,14 +46,14 @@ int main(){
 		fprintf (rem,"%i ", t);
 
 		for(int i=0;i<n;i++){
-			void SIR_with_Tc(double t, double y[], double dydt[]){
-				SIR(T_c[i],t,y,dydt);
-			}
-			driver12(3,SIR_with_Tc,(double) a,y,(double) t,h,acc,eps);
 			
-			fprintf (sus, "%g ", y[0]);
-			fprintf (inf, "%g ", y[1]);
-			fprintf (rem, "%g ", y[2]);
+			contact_time = T_c[i];
+			
+			driver12(n,SIR_with_Tc,(double) a,y,(double) t,h,acc,eps);
+			
+			fprintf (sus, "%15g ", y[0]);
+			fprintf (inf, "%15g ", y[1]);
+			fprintf (rem, "%15g ", y[2]);
 		}
 		fprintf (sus, "\n");
 		fprintf (inf, "\n");

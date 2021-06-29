@@ -5,7 +5,7 @@
 #include<gsl/gsl_blas.h>
 
 
-double delta=1.5e-8;
+double delta=1.0/524288;
 
 void num_grad (double f(gsl_vector*),gsl_vector* x, gsl_vector* grad){
 	double fx=f(x);
@@ -50,7 +50,7 @@ int qnewt(double f(gsl_vector*),gsl_vector* x, double acc){
 				gsteps++;
 				break;
 			}
-			if(L<1.0/32){
+			if(L<delta){
 				bsteps++;
 				break;
 			}

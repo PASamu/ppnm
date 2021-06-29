@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<stdlib.h>
 #include<math.h>
 #include<float.h>
 #include<gsl/gsl_vector.h>
@@ -32,24 +33,13 @@ double response(ann* network,double x){
 	return s;
 }
 
+double cost_func(gsl_vector *p);
+
 void train(ann* network, gsl_vector* xs, gsl_vector* ys){
-	double cost_func(gsl_vector* p){
-		gsl_vector_memcpy(network->params,p);
-		double sum=0;
-		for(int i=0;i<xs->size;i++){
-			double xi=gsl_vector_get(xs,i);
-			double yi=gsl_vector_get(ys,i);
-			double fi=response(network,xi);
-			sum+=(fi-yi)*(fi-yi);
-		}
-		return sum/xs->size;
-	}
 	gsl_vector* p=gsl_vector_alloc(network->params->size);
 	gsl_vector_memcpy(p,network->params);
-
 	qnewt(cost_func,p,1e-3);
 	gsl_vector_memcpy(network->params,p);
-
 	gsl_vector_free(p);
 }
 
